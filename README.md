@@ -81,3 +81,18 @@
 | Detail Page & Reservation Request | ![detail](https://user-images.githubusercontent.com/70960594/201517416-598cbb31-2576-4c65-890a-e9556ba5688b.gif) | - | **FRONT-END** </br> `김도영` </br> **BACK-END** </br> `정도영` |
 | Reservation inquiry Page | ![Booking](https://user-images.githubusercontent.com/70960594/201517442-43439c0a-226c-40a2-ac91-33dd5339cbbd.gif) | - 에약이 완료된 숙박에 대한 데이터 UI 구현 | **FRONT-END**`강은지`  </br> **BACK-END** </br> `정도영` |
 
+
+## 담당 기능 상세 설명
+
+1. REST API로 카카오 소셜 로그인(회원가입) 구현
+- 카카오로부터 발급받은 `API Key`와 `Redirect URI`를 사용해 로그인 또는 회원가입 버튼을 클릭 시 Kakao Auth URL로 이동합니다. 
+- 로그인에 성공하면 해당 `Redirect URI`로 인가코드를 발급 받습니다. (`useSearchParams`를 사용해 인가코드를 `code`라는 변수에 할당)
+- `Redirect URI`와 동일한 파라미터로 라우터 설정을 해서 로그인이 진행되는 동안 로딩화면을 보여줍니다.
+- 인가코드가 담긴 `code`를 백엔드로부터 받은 API로 전송합니다. (GET method 사용)
+- 해당 인가코드를 넘겨주고, 카카오로부터 토큰을 받아서 프로젝트에서 사용할 새로운 토큰을 전송 받습니다. 
+- 해당 토큰을 `localStorage`에 저장합니다. (이때 host 모드에서 사용할 userId도 함께 저장합니다.) 성공적으로 저장이 되면 메인 홈으로 이동합니다. 
+
+
+
+
+
