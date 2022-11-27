@@ -92,7 +92,34 @@
 - 해당 인가코드를 넘겨주고, 카카오로부터 토큰을 받아서 프로젝트에서 사용할 새로운 토큰을 전송 받습니다. 
 - 해당 토큰을 `localStorage`에 저장합니다. (이때 host 모드에서 사용할 userId도 함께 저장합니다.) 성공적으로 저장이 되면 메인 홈으로 이동합니다. 
 
+2. GNB UI와 지역, 날짜, 게스트 수에 따른 필터링 기능 구현
+<div align="center">GNB Components Structure</div>
+
+</br>
+
+<div align="center"><img width="600" alt="gnb_flowchart" src="https://user-images.githubusercontent.com/70960594/202838201-1cfb4664-267e-491d-b0fa-52cba494271c.png"></div>
+
+- 위치, 체크인 & 체크아웃 날짜, 게스트 수 필터는 Search Bar를 클릭하면 상세한 설정이 가능한 모달창이 뜨도록 했습니다. 
+
+- 상세 필터가 가능한 위치, 날짜, 게스트 인원 수를 설정할 수 있는 컴포넌트들을 하나의 폴더에 모아서 관리하도록 했습니다. 
+
+- 위치는 `서울`, `경기`, `인천` 중에서 선택하고 날짜는 `reace-datepicker`를 사용해서 선택하고, 게스트 수는 12명 이내로 선택하게 하여 state로 저장했습니다.
+
+- 저장된 state value들은 백엔드의 해당 API로 데이터가 전송이 되고, 프론트에서는 response를 받아서 필터링 된 query와 UI 보여줍니다. 
+
+  - 필터링 되어지는 모든 `query`들은 하나의 object에 할당해서 object를 string으로 변환하는 유틸함수로 관리하였습니다.  
+  
+- Profile 모달 창은 사용자의 로그인 여부에 따라 다른 UI 보여주기 위해서 2개의 컴포넌트로 분리했습니다. localStorage에서 token을 검사하고 토큰의 여부에 따라 다른 UI를 보여줍니다.  
 
 
+3. 예약 완료 페이지
+- 상세페이지에서 예약이 완료된 데이터를 조회해서 예약이 완료된 목록을 보여줍니다.
+- 예약된 목룍이 없는 경우, data의 length 값을 검사해서 Empty 페이지를 보여줍니다. 
 
+
+4. `react-modal` 라이브러리를 활용한 공용 모달 컴포넌트 생성
+
+5. util 함수 생성
+- 날짜 형식의 데이터를 string으로 변환하는 함수
+- 객체 형태의 query를 string으로 변환하는 함수
 
